@@ -12,7 +12,7 @@
 	<dict>
 		<key>03A0891B1B7748A78B826B24C42C9A8ACCD059C0</key>
 		<string>https://github.com/rawbklein/swift.git</string>
-		<key>604DAA61DF0E65B6B9C3A2FEB368104C02FA0F95</key>
+		<key>A29F0229078E873CC031A0AE09AF34355434F94F</key>
 		<string>https://github.com/rawbklein/ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
@@ -21,7 +21,7 @@
 	<dict>
 		<key>03A0891B1B7748A78B826B24C42C9A8ACCD059C0</key>
 		<string>../../..</string>
-		<key>604DAA61DF0E65B6B9C3A2FEB368104C02FA0F95</key>
+		<key>A29F0229078E873CC031A0AE09AF34355434F94F</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -29,7 +29,7 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>604DAA61DF0E65B6B9C3A2FEB368104C02FA0F95</string>
+	<string>A29F0229078E873CC031A0AE09AF34355434F94F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -44,7 +44,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>604DAA61DF0E65B6B9C3A2FEB368104C02FA0F95</string>
+			<string>A29F0229078E873CC031A0AE09AF34355434F94F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>classProject</string>
 		</dict>

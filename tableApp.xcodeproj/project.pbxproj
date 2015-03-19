@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9CF1BAA1AAFDC460083A658 /* kitties.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C9CF1BA91AAFDC460083A658 /* kitties.jpeg */; };
+		C9CF1BAC1AAFE4380083A658 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF1BAB1AAFE4380083A658 /* PersonCell.swift */; };
 		C9D808A21A9FCCC500501284 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D808A11A9FCCC500501284 /* AppDelegate.swift */; };
 		C9D808A41A9FCCC500501284 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D808A31A9FCCC500501284 /* ViewController.swift */; };
 		C9D808A71A9FCCC500501284 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D808A51A9FCCC500501284 /* Main.storyboard */; };
@@ -15,6 +17,7 @@
 		C9D808B81A9FCCC500501284 /* tableAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D808B71A9FCCC500501284 /* tableAppTests.swift */; };
 		C9D808C21AA018AA00501284 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D808C11AA018AA00501284 /* Person.swift */; };
 		C9D808C71AA4268E00501284 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D808C61AA4268E00501284 /* PersonDetailViewController.swift */; };
+		C9E046861AAFF1650012D06B /* People.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9E046851AAFF1650012D06B /* People.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C9CF1BA91AAFDC460083A658 /* kitties.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kitties.jpeg; sourceTree = "<group>"; };
+		C9CF1BAB1AAFE4380083A658 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		C9D8089C1A9FCCC500501284 /* tableApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tableApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D808A01A9FCCC500501284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9D808A11A9FCCC500501284 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +45,7 @@
 		C9D808B71A9FCCC500501284 /* tableAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableAppTests.swift; sourceTree = "<group>"; };
 		C9D808C11AA018AA00501284 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		C9D808C61AA4268E00501284 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		C9E046851AAFF1650012D06B /* People.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = People.plist; path = ../People.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,8 @@
 		C9D808C31AA018BB00501284 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C9CF1BAB1AAFE4380083A658 /* PersonCell.swift */,
+				C9CF1BA91AAFDC460083A658 /* kitties.jpeg */,
 				C9D808A51A9FCCC500501284 /* Main.storyboard */,
 			);
 			name = View;
@@ -128,6 +136,7 @@
 		C9D808C41AA018C200501284 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C9E046851AAFF1650012D06B /* People.plist */,
 				C9D808C11AA018AA00501284 /* Person.swift */,
 			);
 			name = Models;
@@ -222,7 +231,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9E046861AAFF1650012D06B /* People.plist in Resources */,
 				C9D808A71A9FCCC500501284 /* Main.storyboard in Resources */,
+				C9CF1BAA1AAFDC460083A658 /* kitties.jpeg in Resources */,
 				C9D808AC1A9FCCC500501284 /* LaunchScreen.xib in Resources */,
 				C9D808A91A9FCCC500501284 /* Images.xcassets in Resources */,
 			);
@@ -243,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D808C21AA018AA00501284 /* Person.swift in Sources */,
+				C9CF1BAC1AAFE4380083A658 /* PersonCell.swift in Sources */,
 				C9D808A41A9FCCC500501284 /* ViewController.swift in Sources */,
 				C9D808C71AA4268E00501284 /* PersonDetailViewController.swift in Sources */,
 				C9D808A21A9FCCC500501284 /* AppDelegate.swift in Sources */,

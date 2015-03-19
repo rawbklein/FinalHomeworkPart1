@@ -8,26 +8,71 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource {
     
     var people = [Person]() //array with person object empty
     
-    //var names = ["Rob", "Steven", " notRob", "notSteven", "Sawkpuppet", "Rob2", "Steven2", " notRob2", "notSteven2", "Sawkpuppet2", "Rob3", "Steven3", " notRob3", "notSteven3", "Sawkpuppet3",]
-    
-   
-    
     @IBOutlet weak var tableView: UITableView!
-    //hello
-
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.tableView.backgroundColor = UIColor.yellowColor()
-        self.title = "homePage"
-        self.tableView.delegate = self
         
+        let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        var rob = Person(firstName: "Rob", lastName: "Klein")
+        if let count = userDefaults.objectForKey("launchCount") as? Int {
+            let newCount = count + 1
+            userDefaults.setObject(newCount, forKey: "launchCount")
+        } else {
+            let count = 1
+            userDefaults.setObject(count, forKey: "launchCount")
+        }
+        userDefaults.synchronize()
+        
+        self.loadFromArchive()
+        
+        if self.people.isEmpty {
+            if let filePath = NSBundle.mainBundle().pathForResource("People", ofType: "plist") {
+                if let plistArray = NSArray(contentsOfFile: filePath) {
+                    for personObject in plistArray {
+                if let personDictionary = personObject as? NSDictionary {
+                    let firstName = personDictionary["firstName"] as String
+                    let lastName = personDictionary["lastName"] as String
+                    let person = Person(firstName: firstName, lastName: lastName)
+                    self.people.append(person)
+                }
+                }
+                } else {
+            }
+        }
+            self.saveToArchive()
+        }
+         self.tableView.dataSource = self
+    }
+    
+     
+        func loadFromArchive() {
+            let path = getDocumentsPath()
+            let arrayFromArchive = NSKeyedUnarchiver.unarchiveObjectWithFile(path + "/MyArchive") as [Person]
+            self.people = arrayFromArchive
+        }
+            
+        func saveToArchive() {
+                    let path = self.getDocumentsPath()
+                    NSKeyedArchiver.archiveRootObject(self.people, toFile: path + "/MyArchive")
+                    }
+        
+        func getDocumentsPath() -> String {
+            let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+            let path = paths.first as String
+            return path
+        }
+
+       
+//        self.tableView.backgroundColor = UIColor.yellowColor()
+//        self.title = "homePage"
+//        self.tableView.delegate = self
+    
+       /* var rob = Person(firstName: "Rob", lastName: "Klein")
         var steven = Person(firstName: "Steven", lastName: "Palmer")
         var viole = Person(firstName: "Viole", lastName: "Von Krause")
         var mum = Person(firstName: "Ur", lastName: "Mum")
@@ -35,33 +80,39 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       //  self.people.append(rob)
         self.people += [steven,rob, viole, mum ,man]
         
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib. */
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.saveToArchive()
+        self.tableView.reloadData()
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "PersonDetailViewController" {
-        let destinationVC = segue.destinationViewController as PersonDetailViewController
-        let indexPath = self.tableView.indexPathForSelectedRow()
-        var person = self.people[indexPath!.row]
-        destinationVC.selectedPerson = person
+        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return self.people.count
         }
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.people.count
-    }
-    
+        
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        let person = self.people[indexPath.row]
-        cell.textLabel?.text = person.firstName + " " + person.lastName //NAME NOT NAMES NOT SURE
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as PersonCell
+        let personToDisplay = self.people[indexPath.row]
+////        //cell.textLabel?.text = personToDisplay.firstName + " " + personToDisplay.lastName //NAME NOT NAMES NOT SURE
+        cell.personLabel.text = personToDisplay.firstName
+        
+       if personToDisplay.image != nil {
+           cell.personImageView.image = personToDisplay.image
+       } else {
+            cell.personImageView.image = UIImage(named: "kitties.jpeg")
+        }
+        
         return cell
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PersonDetailViewController" { // checks segue code!
+            let destinationVC = segue.destinationViewController as PersonDetailViewController
+            let indexPath = self.tableView.indexPathForSelectedRow()
+            var person = self.people[indexPath!.row]
+            
+            destinationVC.selectedPerson = person
+        }
     }
-
-
 }
-
